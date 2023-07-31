@@ -1,4 +1,4 @@
-Rk,Player,Nation,Pos,Squad,Comp,Age,Born,90s,Tkl,TklW,Def 3rd,Mid 3rd,Att 3rd,Tkl,Att,Tkl%,Lost,Blocks,Sh,Pass,Int,Tkl+Int,Clr,Err,Matches,id
+Rk,Player,Nation,Pos,Squad,Comp,Age,Born,90s,Tkl,TklW,tkl.Def 3rd,tkl.Mid 3rd,tkl.Att 3rd,challenges.Tkl,challenges.Att,challenges.Tkl%,challenges.Lost,Blocks,blocks.Sh,blocks.Pass,Int,Tkl+Int,Clr,Err,Matches,id
 1,Brenden Aaronson,us USA,"MF,FW",Leeds United,eng Premier League,21,2000,26.4,45,18,16,22,7,15,46,32.6,31,43,3,40,5,50,6,1,Matches,5bc43860
 2,Paxten Aaronson,us USA,"MF,DF",Eint Frankfurt,de Bundesliga,18,2003,1.9,6,5,2,2,2,2,3,66.7,1,2,1,1,0,6,2,0,Matches,4cd41883
 3,James Abankwah,ie IRL,DF,Udinese,it Serie A,18,2004,0.7,1,1,0,1,0,0,0,,0,4,2,2,0,1,5,0,Matches,4b7a9fcc

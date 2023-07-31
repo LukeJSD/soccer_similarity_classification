@@ -1,4 +1,4 @@
-Rk,Player,Nation,Pos,Squad,Comp,Age,Born,90s,Cmp,Att,Cmp%,TotDist,PrgDist,Cmp,Att,Cmp%,Cmp,Att,Cmp%,Cmp,Att,Cmp%,Ast,xAG,xA,A-xAG,KP,1/3,PPA,CrsPA,PrgP,Matches,id
+Rk,Player,Nation,Pos,Squad,Comp,Age,Born,90s,pass.Cmp,pass.Att,pass.Cmp%,pass.TotDist,pass.PrgDist,pass.short.Cmp,pass.short.Att,pass.short.Cmp%,pass.med.Cmp,pass.med.Att,pass.med.Cmp%,pass.long.Cmp,pass.long.Att,pass.long.Cmp%,Ast,xAG,xA,A-xAG,KP,pass.1/3,pass.PPA,CrsPA,PrgP,Matches,id
 1,Brenden Aaronson,us USA,"MF,FW",Leeds United,eng Premier League,21,2000,26.4,592,797,74.3,7577,2182,346,423,81.8,150,195,76.9,25,65,38.5,3,4.2,2.6,-1.2,46,47,16,4,86,Matches,5bc43860
 2,Paxten Aaronson,us USA,"MF,DF",Eint Frankfurt,de Bundesliga,18,2003,1.9,51,71,71.8,659,109,36,38,94.7,14,23,60.9,1,6,16.7,0,0.0,0.1,0.0,1,3,0,0,6,Matches,4cd41883
 3,James Abankwah,ie IRL,DF,Udinese,it Serie A,18,2004,0.7,23,29,79.3,375,79,14,15,93.3,6,8,75.0,2,5,40.0,0,0.0,0.0,0.0,0,0,0,0,0,Matches,4b7a9fcc
