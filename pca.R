@@ -22,8 +22,8 @@ get_pca_model <- function(data) {
 
 get_pca_result <- function(data, stat.pca) {
   # plot highest Min players
-  top.players.df <- tail((data %>% arrange(Min)), n=100)
-  pca.set <- predict(stat.pca, top.players.df[, !names(data) %in% info.features])
+  # top.players.df <- tail((data %>% arrange(Min)), n=100)
+  # pca.set <- predict(stat.pca, top.players.df[, !names(data) %in% info.features])
   #plot(pca.set[,1:2], pch=19, col=factor(top.players.df$Pos))
   
   # Finalize dataframe

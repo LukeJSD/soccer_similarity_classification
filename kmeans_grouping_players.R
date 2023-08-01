@@ -6,9 +6,9 @@ setwd("C:/Users/luke/Personal_Projects/Soccer/Similarity/")
 
 source("C:/Users/luke/Personal_Projects/Soccer/Similarity/r_similar.R")
 
-test.kmeans <- function(df, kmax=20) {
+test.kmeans <- function(df, kmin=1, kmax=20) {
   wss <- c()
-  for (k in 1:kmax) {
+  for (k in kmin:kmax) {
     km <- kmeans(df[,c("PCA1", "PCA2")], k)
     wss <- c(wss, km$tot.withinss)
   }
@@ -27,6 +27,7 @@ plot.kmeans <- function(df, km, position) {
   df["cluster"] <- km$cluster
   k.pos <- df[,c("PCA1", "PCA2")]
   k.pos["cluster"] <- km$cluster
+
   gplt <- ggplot(data=k.pos, 
                  aes(
                    x=PCA1, 
@@ -54,49 +55,60 @@ save.kmeans.plot <- function(pos) {
   if (pos=="MF") {
     data <- data.final.mf %>% filter(grepl(pos, Pos))
     k <- 5
+    k <- 11
   } else if (pos=="DF") {
     data <- data.final.df %>% filter(grepl(pos, Pos))
     k <- 5
+    k <- 7
   } else if (pos=="FW") {
     data <- data.final.fw %>% filter(grepl(pos, Pos))
     k <- 7
+    k<-10
   }
   # test.kmeans(data)
   km.res <- get.kmeans.model(data, k)
   png(paste(getwd(), paste(paste("Clusters", pos, sep="/"), ".png", sep="_kmeans"), sep="/"))
   plot.kmeans(data, km.res, pos)
   dev.off()
+  return(km.res)
 }
 get.pca.scores <- function(position) {
   if (position=="MF") {
+    diff_ <- abs(pca.mf$scores[,1]-pca.mf$scores[,2])
     return(data.frame(pca.mf$scores[,1:2]) %>% arrange(desc(Comp.1)))
   } else if (position=="DF") {
+    diff_ <- abs(pca.df$scores[,1]-pca.df$scores[,2])
     return(data.frame(pca.df$scores[,1:2]) %>% arrange(desc(Comp.1)))
   } else if (position=="FW") {
+    diff_ <- abs(pca.fw$scores[,1]-pca.fw$scores[,2])
     return(data.frame(pca.fw$scores[,1:2]) %>% arrange(desc(Comp.1)))
   }
 }
 
-get.data.w_cluster <- function(pos) {
+get.data.w_cluster <- function(pos, mod=NULL) {
   if (pos=="MF") {
     data <- data.final.mf %>% filter(grepl(pos, Pos))
     k <- 5
+    k <- 11
   } else if (pos=="DF") {
     data <- data.final.df %>% filter(grepl(pos, Pos))
     k <- 5
+    k <- 7
   } else if (pos=="FW") {
     data <- data.final.fw %>% filter(grepl(pos, Pos))
     k <- 7
+    k <- 10
   }
-  # test.kmeans(data)
-  km.res <- get.kmeans.model(data, k)
+  if (is.null(mod)) {
+    # test.kmeans(data)
+    km.res <- get.kmeans.model(data, k)
+  } else {
+    km.res <- mod
+  }
   data["cluster"] <- km.res$cluster
   return(data)
 }
 
-for (p in c("DF", "MF", "FW")) {
-  save.kmeans.plot(p)
-  write.csv(get.pca.scores(p), paste(getwd(), paste(paste("Clusters", p, sep="/"), ".csv", sep="_pca_scores"), sep="/"))
-}
+
 
 

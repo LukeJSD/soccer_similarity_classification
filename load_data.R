@@ -3,6 +3,8 @@ library(corrplot)
 library(dplyr)
 library(ggfortify)
 
+setwd("C:/Users/luke/Personal_Projects/Soccer/Similarity/")
+
 info.features <- c("Rk", "Player", "id", "Nation", "Pos", "Squad", "Comp", "Age", "Born")
 
 get_data <- function(league) {# Load data
@@ -58,6 +60,14 @@ get_data <- function(league) {# Load data
   }
   # Ensure all data is numerical
   df <- df %>% select(where(is.numeric))
+  
+  # Make per 90
+  minutes <- df$Min
+  X90s <- df$X90s
+  df <- df %>% select(!names(df)[grepl("90", names(df)) | "Min"==names(df)])
+  df[,names(df)[!names(df) %in% c("MP", "Starts, Min")]] <- (df[,names(df)[!names(df) %in% c("MP", "Starts, Min")]]/minutes)*90
+  df["X90s"] <- X90s
+  
   # Normalize Data (might need different method)
   df = scale(df)
   # Recombine dataframes
