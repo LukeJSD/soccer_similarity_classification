@@ -75,13 +75,13 @@ save.kmeans.plot <- function(pos) {
 get.pca.scores <- function(position) {
   if (position=="MF") {
     diff_ <- abs(pca.mf$scores[,1]-pca.mf$scores[,2])
-    return(data.frame(pca.mf$scores[,1:2]) %>% arrange(desc(Comp.1)))
+    return(data.frame(cbind(pca.mf$scores[,1:2], diff_)) %>% arrange(desc(diff_)))
   } else if (position=="DF") {
     diff_ <- abs(pca.df$scores[,1]-pca.df$scores[,2])
-    return(data.frame(pca.df$scores[,1:2]) %>% arrange(desc(Comp.1)))
+    return(data.frame(cbind(pca.df$scores[,1:2], diff_)) %>% arrange(desc(diff_)))
   } else if (position=="FW") {
     diff_ <- abs(pca.fw$scores[,1]-pca.fw$scores[,2])
-    return(data.frame(pca.fw$scores[,1:2]) %>% arrange(desc(Comp.1)))
+    return(data.frame(cbind(pca.fw$scores[,1:2], diff_)) %>% arrange(desc(diff_)))
   }
 }
 
