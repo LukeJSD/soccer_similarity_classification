@@ -69,7 +69,7 @@ get_data <- function(league) {# Load data
   df["X90s"] <- X90s
   
   # Normalize Data (might need different method)
-  df = scale(df)
+  #df = scale(df)
   # Recombine dataframes
   data <- cbind(info, df)
   return(data)

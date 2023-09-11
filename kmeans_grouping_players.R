@@ -56,14 +56,17 @@ save.kmeans.plot <- function(pos) {
     data <- data.final.mf %>% filter(grepl(pos, Pos))
     k <- 5
     k <- 11
+    k <- 7
   } else if (pos=="DF") {
     data <- data.final.df %>% filter(grepl(pos, Pos))
     k <- 5
     k <- 7
+    k <- 11
   } else if (pos=="FW") {
     data <- data.final.fw %>% filter(grepl(pos, Pos))
     k <- 7
-    k<-10
+    k <- 10
+    k <- 12
   }
   # test.kmeans(data)
   km.res <- get.kmeans.model(data, k)
@@ -90,14 +93,17 @@ get.data.w_cluster <- function(pos, mod=NULL) {
     data <- data.final.mf %>% filter(grepl(pos, Pos))
     k <- 5
     k <- 11
+    k <- 7
   } else if (pos=="DF") {
     data <- data.final.df %>% filter(grepl(pos, Pos))
     k <- 5
     k <- 7
+    k <- 11
   } else if (pos=="FW") {
     data <- data.final.fw %>% filter(grepl(pos, Pos))
     k <- 7
     k <- 10
+    k <- 12
   }
   if (is.null(mod)) {
     # test.kmeans(data)

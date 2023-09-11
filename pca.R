@@ -5,8 +5,15 @@ library(ggfortify)
 
 info.features <- c("Rk", "Player", "id", "Nation", "Pos", "Squad", "Comp", "Age", "Born")
 
+scale_data <- function(data) {
+  df <- scale(data[, !names(data) %in% info.features])
+  info <- data[,info.features]
+  return(cbind(info, df))
+}
+
 # Should try to make a model for each position, not all together
 get_pca_model <- function(data) {
+  data <- scale_data(data)
   # Correlation
   M <- cor(data[, !names(data) %in% info.features])
   #corrplot(M, method = 'color')
@@ -21,6 +28,7 @@ get_pca_model <- function(data) {
 }
 
 get_pca_result <- function(data, stat.pca) {
+  data <- scale_data(data)
   # plot highest Min players
   # top.players.df <- tail((data %>% arrange(Min)), n=100)
   # pca.set <- predict(stat.pca, top.players.df[, !names(data) %in% info.features])
